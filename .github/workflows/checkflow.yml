@@ -1,0 +1,30 @@
+name: user-application-actions 
+
+run-name: ${{ github.actor }} is running this workflow
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Buildcheck
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 'v20.11.0'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Echo Node Version
+      run: node -v
+
+    - name: Echo Hello World
+      run: echo "Hello, World!"
