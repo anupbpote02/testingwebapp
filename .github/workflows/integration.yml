@@ -1,0 +1,27 @@
+name: Integration Tests with MySQL
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  integration_tests_mysql:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: ${{ secrets.DB_NAME }}
+          MYSQL_USER: ${{ secrets.DB_USER }}
+          MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          MYSQL_HOST: localhost
+        ports:
+          - 3306:3306
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Run Integration Tests
+      run: npm test
