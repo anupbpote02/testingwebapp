@@ -1,5 +1,10 @@
 name: Integration Tests with MySQL
 
+env:
+    DB_NAME: ${{ secrets.DB_NAME }}
+    DB_USER: ${{ secrets.DB_USER }}
+    DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+    
 on:
   pull_request:
     branches: [main]
@@ -7,12 +12,6 @@ on:
 jobs:
   integration_tests_mysql:
     runs-on: ubuntu-latest
-
-    env:
-        DB_NAME: ${{ secrets.DB_NAME }}
-        DB_USER: ${{ secrets.DB_USER }}
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        DB_Host: mysql
 
     services:
       mysql:
@@ -25,6 +24,8 @@ jobs:
         ports:
           - 3306:3306
 
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3  
+        
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
