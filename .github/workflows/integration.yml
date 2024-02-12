@@ -18,9 +18,9 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_DATABASE: ${{ secrets.DB_NAME }}
-          MYSQL_USER: ${{ secrets.DB_USER }}
-          MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           
         ports:
           - 3306:3306
@@ -28,7 +28,10 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-
+    
+    - name: Debug Environment Variables
+      run: echo "DB_HOST=${{ secrets.DB_HOST }} DB_USER=${{ secrets.DB_USER }} DB_PASSWORD=${{ secrets.DB_PASSWORD }} DB_NAME=${{ secrets.DB_NAME }}"
+    
     - name: Install Dependencies
       run: npm ci
 
