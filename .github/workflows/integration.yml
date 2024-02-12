@@ -32,5 +32,8 @@ jobs:
     - name: Install Dependencies
       run: npm ci
 
+    - name: Check MySQL Status
+      run: echo "SHOW STATUS LIKE 'Uptime';" | mysql -u${{ secrets.DB_USER }} -p${{ secrets.DB_PASSWORD }} -h${{ env.DB_HOST }} -P3306 ${{ secrets.DB_NAME }}
+
     - name: Run Integration Tests
       run: npm test
