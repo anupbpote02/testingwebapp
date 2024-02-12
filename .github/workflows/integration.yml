@@ -17,8 +17,8 @@ jobs:
     services:
       mysql:
         image: mysql:8.0
-        env:
-          DB_NAME: ${{ secrets.DB_NAME }}
+        env:      
+          MYSQL_DATABASE: ${{ secrets.DB_NAME }}
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
