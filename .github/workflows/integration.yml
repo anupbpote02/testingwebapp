@@ -17,8 +17,10 @@ jobs:
     steps:
 
     - name: Start MySQL
-      run: sudo /etc/init.d/mysql start
-      
+      run: |
+            sudo /etc/init.d/mysql start
+            sudo service mysql status  
+    
 
     - name: Create Database
       run: mysql --port 3306 -u ${{secrets.DB_USER}} -p${{secrets.DB_PASSWORD}} 
