@@ -27,6 +27,10 @@ jobs:
       env:
         MYSQL_DATABASE: ${{secrets.DB_NAME}}
 
+    - name: Check Databases
+      run: mysql --port=3306 -u${{secrets.DB_USER}} -p${{secrets.DB_PASSWORD}} -e "SHOW DATABASES;"
+
+
     - name: Checkout Repository
       uses: actions/checkout@v2
     
