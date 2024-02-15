@@ -9,6 +9,7 @@ const sequelize = new Sequelize({
     database: process.env.DB_NAME,
 });
 
-console.log("this is my creds" );
+console.log("checking my DB" );
 console.log(process.env.DB_NAME);
+
 module.exports = sequelize;
