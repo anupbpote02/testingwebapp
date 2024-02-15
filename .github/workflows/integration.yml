@@ -18,7 +18,7 @@ jobs:
 
     - name: Start MySQL
       run: sudo /etc/init.d/mysql start
-      options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
+      
 
     - name: Create Database
       run: mysql --port 3306 -u ${{secrets.DB_USER}} -p${{secrets.DB_PASSWORD}} 
