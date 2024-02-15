@@ -1,7 +1,7 @@
 name: Integration Tests with MySQL
 
 env:
-    DB_NAME: ${{ secrets.DB_NAME }}
+    MYSQL_DATABASE: ${{ secrets.DB_NAME }}
     DB_USER: ${{ secrets.DB_USER }}
     DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
     MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
@@ -14,20 +14,17 @@ jobs:
   integration_tests_mysql:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:8.0
-        env:      
-          MYSQL_DATABASE: ${{ secrets.DB_NAME }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        ports:
-          - 3306:3306
-
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5  
-
     steps:
+
+    - name: Start MySQL
+      run: sudo /etc/init.d/mysql start
+      options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
+
+    - name: Create Database
+      run: mysql --port 3306 -u ${{secrets.DB_USER}} -p${{secrets.DB_PASSWORD}} 
+      env:
+        MYSQL_DATABASE: ${{secrets.DB_NAME}}
+
     - name: Checkout Repository
       uses: actions/checkout@v2
     
@@ -45,3 +42,4 @@ jobs:
 
     - name: Run Integration Tests
       run: npm test
+
