@@ -1,10 +1,6 @@
 name: Integration Tests with MySQL
 
-env:
-    DB_NAME: ${{ secrets.DB_NAME }}
-    DB_USER: ${{ secrets.DB_USER }}
-    DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-   
+
     
 on:
   pull_request:
@@ -13,6 +9,13 @@ on:
 jobs:
   integration_tests_mysql:
     runs-on: ubuntu-latest
+
+    env:
+      DB_NAME: ${{ secrets.DB_NAME }}
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_HOST: ${{ secrets.DB_HOST }}
+     
 
     steps:
 
