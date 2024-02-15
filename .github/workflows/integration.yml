@@ -23,7 +23,7 @@ jobs:
     
 
     - name: Create Database
-      run: mysql --port 3306 -u ${{secrets.DB_USER}} -p${{secrets.DB_PASSWORD}} -e "CREATE DATABASE ${{ secrets.DB_NAME }};"
+      run: mysql -h ${{secrets.DB_HOST}} --port 3306 -u${{secrets.DB_USER}} -p${{secrets.DB_PASSWORD}} -e "CREATE DATABASE ${{ secrets.DB_NAME }};"
      
 
     - name: Check Databases
