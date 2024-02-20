@@ -21,7 +21,7 @@ jobs:
         run:  cd ./packertest/
 
       - name: Format Packer Template
-        run: packer fmt ./example.pkr.hcl
+        run: packer fmt example.pkr.hcl
 
       - name: Validate Packer Template
-        run: packer validate ./example.pkr.hcl
+        run: packer validate example.pkr.hcl
