@@ -20,6 +20,9 @@ jobs:
       - name: cd to packer directory
         run:  cd ./packertest/
 
+      - name: checking diret
+        run:  ls -la
+
       - name: Format Packer Template
         run: packer fmt example.pkr.hcl
 
