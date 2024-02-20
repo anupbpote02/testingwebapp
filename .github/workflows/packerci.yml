@@ -23,6 +23,9 @@ jobs:
       - name: checking diret
         run:  ls -la
 
+      - name: Init Packer Template
+        run: packer init packertest/example.pkr.hcl
+
       - name: Format Packer Template
         run: packer fmt packertest/example.pkr.hcl
 
