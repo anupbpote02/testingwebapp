@@ -8,7 +8,12 @@ packer {
   }
 }
 
+variable "GCP_COMPUTE" {
 
+  type= string
+  description= "storing creds"
+  default = env("GCP_COMPUTE")
+}
 
 source "googlecompute" "basic-example" {
   project_id          = "csyedevcheck"
@@ -16,7 +21,7 @@ source "googlecompute" "basic-example" {
   image_name          = "webapp-image"
   image_family        = "webapp-family"
   zone                = "us-east1-c"
-  credentials_json    = "${{ secrets.GCP_COMPUTE }}"
+  credentials_json    = "${var.GCP_COMPUTE}"
   ssh_username        = "useraccount"
 }
 
