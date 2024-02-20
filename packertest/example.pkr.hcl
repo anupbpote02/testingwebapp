@@ -16,7 +16,7 @@ source "googlecompute" "basic-example" {
   image_name          = "webapp-image"
   image_family        = "webapp-family"
   zone                = "us-east1-c"
-  credentials_file    = ${{secrets.GCP_COMPUTE}}
+  credentials_json    = "${{secrets.GCP_COMPUTE}}"
   ssh_username        = "useraccount"
 }
 
