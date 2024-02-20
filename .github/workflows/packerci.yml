@@ -8,6 +8,9 @@ jobs:
   packer-ci:
     runs-on: ubuntu-latest
 
+    env:
+        GCP_COMPUTE: ${{ secrets.GCP_COMPUTE }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
