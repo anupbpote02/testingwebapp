@@ -30,15 +30,15 @@ build {
 
 
   provisioner "shell" {
-    script = "./test1firewall.sh"
+    script = "packertest/test1firewall.sh"
   }
 
   provisioner "shell" {
-    script = "./test1node.sh"
+    script = "packertest/test1node.sh"
   }
 
   provisioner "shell" {
-    script = "./test1sql.sh"
+    script = "packertest/test1sql.sh"
   }
 
   provisioner "file" {
@@ -47,7 +47,7 @@ build {
   }
 
   provisioner "shell" {
-    script = "./installstart.sh"
+    script = "packertest/installstart.sh"
   }
 
   // provisioner "file" {
@@ -56,7 +56,7 @@ build {
   // }
 
   provisioner "shell" {
-    script = "./useradd.sh"
+    script = "packertest/useradd.sh"
   }
 
 
