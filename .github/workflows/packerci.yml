@@ -18,7 +18,7 @@ jobs:
             version: 1.10.1
 
       - name: cd to packer directory
-        run:  cd ./packertest/
+        run:  cd packertest
 
       - name: checking diret
         run:  ls -la
