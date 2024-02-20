@@ -1,0 +1,27 @@
+name: Packer Continuous Integration
+
+on:
+    pull_request:
+      branches: [main]
+
+jobs:
+  packer-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Packer
+        uses: hashicorp/setup-packer@v1
+        with:
+          version: latest
+
+      - name: cd to packer directory
+        run:  cd .\packertest\
+
+      - name: Format Packer Template
+        run: packer fmt .\example.pkr.hcl
+
+      - name: Validate Packer Template
+        run: packer validate .\example.pkr.hcl
