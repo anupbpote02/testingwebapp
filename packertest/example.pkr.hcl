@@ -42,7 +42,7 @@ build {
   }
 
   provisioner "file" {
-    source      = "C:/Users/anupb/Music/webapp-main.zip"
+    source      = "./webapp-main.zip"
     destination = "/tmp/webapp-main.zip"
   }
 

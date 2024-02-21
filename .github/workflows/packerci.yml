@@ -20,8 +20,8 @@ jobs:
         with:
             version: 1.10.1
 
-      - name: cd to packer directory
-        run:  cd packertest
+      - name: Zip Packer Artifacts
+        run: zip -r webapp_main.zip ./*
 
       - name: checking diret
         run:  ls -la
