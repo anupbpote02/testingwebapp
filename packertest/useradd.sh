@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+DB_NAME= "${DB_NAME}"
+DB_USER= "${DB_USER}"
+DB_PASSWORD= "${DB_PASSWORD}"
+DB_HOST= "${DB_HOST}"
+
 # Step 0: Create the csye6225 group
 echo "Step 0: Creating group csye6225"
 sudo groupadd csye6225
@@ -37,10 +43,10 @@ ConditionPathExists=/opt/webapp-main
 After=network.target
 
 [Service]
-Environment=DB_NAME=cloud_assignment_db
-Environment=DB_USER=root
-Environment=DB_PASSWORD=root
-Environment=DB_HOST=localhost
+Environment=DB_NAME=${DB_NAME}
+Environment=DB_USER=${DB_USER}
+Environment=DB_PASSWORD=${DB_PASSWORD}
+Environment=DB_HOST=${DB_HOST}
 Type=simple
 User=csye6225
 Group=csye6225
