@@ -1,10 +1,10 @@
 #!/bin/bash
 
 
-DB_NAME= "${DB_NAME}"
-DB_USER= "${DB_USER}"
-DB_PASSWORD= "${DB_PASSWORD}"
-DB_HOST= "${DB_HOST}"
+DB_NAME="${DB_NAME}"
+DB_USER="${DB_USER}"
+DB_PASSWORD="${DB_PASSWORD}"
+DB_HOST="${DB_HOST}"
 
 # Step 0: Create the csye6225 group
 echo "Step 0: Creating group csye6225"
