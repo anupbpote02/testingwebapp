@@ -118,10 +118,10 @@ build {
 
   provisioner "shell" {
     script = "packertest/test1sql.sh"
-    environment_vars = 
-      ["MYSQL_USER       = ${var.MYSQL_USER}",
-      "MYSQL_PASSWORD   = ${var.MYSQL_PASSWORD}",
-      "MYSQL_DATABASE   = ${var.MYSQL_DATABASE}"
+    environment_vars =[ 
+      "MYSQL_USER=${var.MYSQL_USER}",
+      "MYSQL_PASSWORD=${var.MYSQL_PASSWORD}",
+      "MYSQL_DATABASE=${var.MYSQL_DATABASE}"
     ]
   }
 
@@ -143,10 +143,10 @@ build {
     script = "packertest/useradd.sh"
 
     environment_vars = [
-      "DB_NAME       = ${var.DB_NAME}",
-      "DB_USER       = ${var.DB_USER}",
-      "DB_PASSWORD   = ${var.DB_PASSWORD}",
-      "DB_HOST       = ${var.DB_HOST}"
+      "DB_NAME=${var.DB_NAME}",
+      "DB_USER=${var.DB_USER}",
+      "DB_PASSWORD=${var.DB_PASSWORD}",
+      "DB_HOST=${var.DB_HOST}"
     ]
 
   }
