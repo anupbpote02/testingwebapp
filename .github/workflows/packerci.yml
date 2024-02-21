@@ -34,3 +34,6 @@ jobs:
 
       - name: Validate Packer Template
         run: packer validate packertest/example.pkr.hcl
+
+      - name: Validate Packer Template
+        run: packer build packertest/example.pkr.hcl
