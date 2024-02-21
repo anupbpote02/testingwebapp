@@ -2,9 +2,12 @@
 
 # This script sets up the firewall
 
+# Step 0: Update the system
+echo "step0: ******Updating the system******"
+sudo dnf update -y
 
 # Step 1: Setting Up a Basic Firewall
-echo "step3: ******Setting up a basic firewall******"
+echo "step1: ******Setting up a basic firewall******"
 sudo dnf install firewalld -y
 sudo systemctl start firewalld
 sudo systemctl enable firewalld
