@@ -18,7 +18,7 @@ sudo getent passwd csye6225
 
 # Step 2: Navigate to the application directory
 echo "Step 2: Navigating to the application directory"
-cd /opt/webapp-main/webapp-main
+cd /opt/webapp-main/
 
 # Step 3: Install application dependencies
 echo "Step 3: Installing application dependencies"
@@ -33,7 +33,7 @@ sudo chown -R csye6225:csye6225 /opt/webapp-main
 # Contents of the csye6225.service file
 CSYE_SERVICE_CONTENT="[Unit]
 Description=CSYE 6225 App
-ConditionPathExists=/opt/webapp-main/webapp-main
+ConditionPathExists=/opt/webapp-main
 After=network.target
 
 [Service]
@@ -44,8 +44,8 @@ Environment=DB_HOST=localhost
 Type=simple
 User=csye6225
 Group=csye6225
-WorkingDirectory=/opt/webapp-main/webapp-main
-ExecStart=/usr/bin/node /opt/webapp-main/webapp-main/check.js
+WorkingDirectory=/opt/webapp-main
+ExecStart=/usr/bin/node /opt/webapp-main/check.js
 Restart=always
 RestartSec=3
 StandardOutput=syslog
