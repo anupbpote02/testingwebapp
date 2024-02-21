@@ -3,9 +3,13 @@
 # This script installs and configures MySQL on CentOS 8
 
 # Define MySQL credentials
-MYSQL_USER="root"
-MYSQL_PASSWORD="root"
-MYSQL_DATABASE="cloud_assignment_db"
+# MYSQL_USER="root"
+# MYSQL_PASSWORD="root"
+# MYSQL_DATABASE="cloud_assignment_db"
+
+MYSQL_USER= "${MYSQL_USER}"
+MYSQL_PASSWORD= "${MYSQL_PASSWORD}"
+MYSQL_DATABASE= "${MYSQL_DATABASE}"
 
 # Install MySQL Server
 echo "Installing MySQL Server..."

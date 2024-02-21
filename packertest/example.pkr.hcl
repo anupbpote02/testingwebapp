@@ -51,6 +51,48 @@ variable "SSH_USERNAME" {
   default     = env("SSH_USERNAME")  
 }
 
+variable "DB_NAME" {
+  type        = string
+  description = "Database name"
+  default     = env("DB_NAME")
+}
+
+variable "DB_USER" {
+  type        = string
+  description = "Database user"
+  default     = env("DB_USER")
+}
+
+variable "DB_PASSWORD" {
+  type        = string
+  description = "Database password"
+  default     = env("DB_PASSWORD")
+}
+
+variable "DB_HOST" {
+  type        = string
+  description = "Database host"
+  default     = env("DB_HOST")
+}
+
+variable "MYSQL_USER" {
+  type        = string
+  description = "MySQL user"
+  default     = env("MYSQL_USER")
+}
+
+variable "MYSQL_PASSWORD" {
+  type        = string
+  description = "MySQL password"
+  default     = env("MYSQL_PASSWORD")
+}
+
+variable "MYSQL_DATABASE" {
+  type        = string
+  description = "MySQL database name"
+  default     = env("MYSQL_DATABASE")
+}
+
 
 source "googlecompute" "basic-example" {
   project_id          = "${var.PROJECT_ID}"
@@ -76,6 +118,11 @@ build {
 
   provisioner "shell" {
     script = "packertest/test1sql.sh"
+    environment_vars = {
+      MYSQL_USER       = "${var.MYSQL_USER}"
+      MYSQL_PASSWORD   = "${var.MYSQL_PASSWORD}"
+      MYSQL_DATABASE   = "${var.MYSQL_DATABASE}"
+    }
   }
 
   provisioner "file" {
@@ -94,6 +141,14 @@ build {
 
   provisioner "shell" {
     script = "packertest/useradd.sh"
+
+    environment_vars = {
+      DB_NAME       = "${var.DB_NAME}"
+      DB_USER       = "${var.DB_USER}"
+      DB_PASSWORD   = "${var.DB_PASSWORD}"
+      DB_HOST       = "${var.DB_HOST}"
+    }
+
   }
 
 
