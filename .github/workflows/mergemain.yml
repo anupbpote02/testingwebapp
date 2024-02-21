@@ -12,11 +12,18 @@ jobs:
  
       env:
         GCP_COMPUTE: ${{ secrets.GCP_COMPUTE }}
-        DB_NAME: ${{ secrets.DB_NAME }}
-        DB_USER: ${{ secrets.DB_USER }}
+        DB_NAME:     ${{ secrets.DB_NAME }}
+        DB_USER:     ${{ secrets.DB_USER }}
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_HOST:     ${{ secrets.DB_HOST }}
 
+        PROJECT_ID :          ${{secrets.PROJECT_ID}}
+        SOURCE_IMAGE_FAMILY:  ${{secrets.SOURCE_IMAGE_FAMILY}}
+        IMAGE_NAME:           ${{secrets.IMAGE_NAME}}
+        IMAGE_FAMILY:         ${{secrets.IMAGE_FAMILY}}
+        ZONE:                 ${{secrets.ZONE}}       
+        SSH_USERNAME:         ${{secrets.SSH_USERNAME}}
+        
       steps:
         - run: echo The PR was merged
 
