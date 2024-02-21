@@ -15,14 +15,51 @@ variable "GCP_COMPUTE" {
   default = env("GCP_COMPUTE")
 }
 
+variable "PROJECT_ID" {
+  type        = string
+  description = "Google Cloud project ID"
+  default     = env("PROJECT_ID")  
+}
+
+variable "SOURCE_IMAGE_FAMILY" {
+  type        = string
+  description = "Source image family for the VM"
+  default     = env("SOURCE_IMAGE_FAMILY")  
+}
+
+variable "IMAGE_NAME" {
+  type        = string
+  description = "Name of the resulting VM image"
+  default     = env("IMAGE_NAME")  
+}
+
+variable "IMAGE_FAMILY" {
+  type        = string
+  description = "Image family for the resulting VM image"
+  default     = env("IMAGE_FAMILY")  
+}
+
+variable "ZONE" {
+  type        = string
+  description = "Google Cloud zone for the VM"
+  default     = env("ZONE")  
+}
+
+variable "SSH_USERNAME" {
+  type        = string
+  description = "SSH username for the VM"
+  default     = env("SSH_USERNAME")  
+}
+
+
 source "googlecompute" "basic-example" {
-  project_id          = "csyecloud"
-  source_image_family = "centos-stream-8"
-  image_name          = "webapp-image"
-  image_family        = "webapp-family"
-  zone                = "us-east1-c"
+  project_id          = "${var.PROJECT_ID}"
+  source_image_family = "${var.SOURCE_IMAGE_FAMILY}"
+  image_name          = "${var.IMAGE_NAME}"
+  image_family        = "${var.IMAGE_FAMILY}"
+  zone                = "${var.ZONE}"
   credentials_json    = "${var.GCP_COMPUTE}"
-  ssh_username        = "useraccount"
+  ssh_username        = "${var.SSH_USERNAME}"
 }
 
 build {

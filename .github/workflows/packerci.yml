@@ -9,8 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-        GCP_COMPUTE: ${{ secrets.GCP_COMPUTE }}
-
+        GCP_COMPUTE:             ${{ secrets.GCP_COMPUTE }}
+        PROJECT_ID :             ${{secrets.PROJECT_ID}}
+        SOURCE_IMAGE_FAMILY:     ${{secrets.SOURCE_IMAGE_FAMILY}}
+        IMAGE_NAME:              ${{secrets.IMAGE_NAME}}
+        IMAGE_FAMILY:            ${{secrets.IMAGE_FAMILY}}
+        ZONE:                    ${{secrets.ZONE}}      
+        SSH_USERNAME:            ${{secrets.SSH_USERNAME}}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
