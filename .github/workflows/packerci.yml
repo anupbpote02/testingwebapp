@@ -21,7 +21,7 @@ jobs:
             version: 1.10.1
 
       - name: Zip Packer Artifacts
-        run: zip -r webapp_main.zip ./*
+        run: zip -r webapp-main.zip ./*
 
       - name: checking diret
         run:  ls -la
