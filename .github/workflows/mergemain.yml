@@ -23,6 +23,10 @@ jobs:
         IMAGE_FAMILY:         ${{secrets.IMAGE_FAMILY}}
         ZONE:                 ${{secrets.ZONE}}       
         SSH_USERNAME:         ${{secrets.SSH_USERNAME}}
+        MYSQL_USER:              ${{ secrets.DB_USER }}
+        MYSQL_PASSWORD:          ${{ secrets.DB_PASSWORD }}
+        MYSQL_DATABASE:          ${{ secrets.DB_NAME }}
+
         
       steps:
         - run: echo The PR was merged
