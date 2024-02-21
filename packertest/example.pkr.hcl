@@ -16,7 +16,7 @@ variable "GCP_COMPUTE" {
 }
 
 source "googlecompute" "basic-example" {
-  project_id          = "csyedevcheck"
+  project_id          = "csyecloud"
   source_image_family = "centos-stream-8"
   image_name          = "webapp-image"
   image_family        = "webapp-family"
